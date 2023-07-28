@@ -12,7 +12,9 @@ let Password = 12345
 // app.get(route, callback(req,res)) request for the route(location) where you wanna fetch your data from, the callback function gets the request
 
 app.get('/' , (req, res)=>{
-       res.send(`<h2>This is the login page<h2>`)
+       res.write(`<h2>This is the login page<h2>`)
+       res.write(`<h2>This is the login page<h2>`)
+       res.send()
 }) //login page
 
 // Create a port to receive and transmit data, were creating the server on that port
@@ -20,7 +22,16 @@ app.get('/' , (req, res)=>{
 app.use(loginMiddleware)
 
 app.get('/profilePage', (req, res)=>{
-       res.send('This is our profile page')
+       res.json([
+              {
+              firstname : 'Hillary',
+              Secondname : 'Nyakundi'
+       },
+       {
+              firstname : 'Hillary',
+              Secondname : 'Marangaa'
+       }
+       ])
 })
 
 
